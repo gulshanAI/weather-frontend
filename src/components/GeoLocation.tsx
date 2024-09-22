@@ -16,7 +16,7 @@ const GeoLocation: React.FC<{
           onLocationSuccess(lat, long);
           setLocationGranted(true);
         },
-        (error) => {
+        () => {
           setErrorMessage(
             "To get the accurate result, please allow location access in your browser settings."
           );
