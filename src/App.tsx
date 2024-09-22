@@ -3,6 +3,7 @@ import { Input } from "./components/ui/input";
 import SideBar from "./components/weather/Side/Index";
 import MainIndex from "./components/weather/Main/Index";
 import { useRef, useState } from "react";
+import GeoLocation from "./components/GeoLocation";
 
 function App() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -18,6 +19,11 @@ function App() {
     e.preventDefault();
     if (inputRef.current) {
       changeCity(inputRef.current.value);
+    }
+  };
+  const setLocation = (lat: number, long: number) => {
+    if (lat && long) {
+      changeCity(`${lat},${long}`);
     }
   };
   return (
@@ -43,6 +49,7 @@ function App() {
                 <SearchIcon className="w-5 h-5 text-muted-foreground" />
               </button>
             </form>
+            <GeoLocation onLocationSuccess={setLocation} />
             <MainIndex cityName={cityName} />
           </div>
           <div>
