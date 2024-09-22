@@ -9,7 +9,30 @@ import { ChartContainer } from "@/components/ui/chart";
 
 export const description = "A linear area chart";
 
-export default function ChartLayout({ children, ...props }) {
+// @ts-ignore
+const SetConfig = ({ config, dataKey, color, children }) => {
+  if (!config)
+    return (
+      <ChartContainer
+        config={{
+          [dataKey]: {
+            label: dataKey,
+            color: color,
+          },
+        }}
+        className="h-28 md:h-48 w-full"
+      >
+        {children}
+      </ChartContainer>
+    );
+  return (
+    <ChartContainer config={config} className="h-28 md:h-48 w-full">
+      {children}
+    </ChartContainer>
+  );
+};
+// @ts-ignore
+export default function ChartLayout({ children, config = null, ...props }) {
   const { dataKey, title, subTitle, color } = props;
   return (
     <Card>
@@ -18,17 +41,9 @@ export default function ChartLayout({ children, ...props }) {
         <CardDescription>{subTitle}</CardDescription>
       </CardHeader>
       <CardContent className="p-3 md:p-5">
-        <ChartContainer
-          config={{
-            [dataKey]: {
-              label: dataKey,
-              color: color,
-            },
-          }}
-          className="h-28 md:h-48 w-full"
-        >
+        <SetConfig config={config} dataKey={dataKey} color={color}>
           {children}
-        </ChartContainer>
+        </SetConfig>
       </CardContent>
     </Card>
   );

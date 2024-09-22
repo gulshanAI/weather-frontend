@@ -10,6 +10,7 @@ import {
 import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import ChartLayout from "./ChartLayout";
 
+// @ts-ignore
 export default function TempChart({ chartData, ...props }) {
   const { dataKey, color } = props;
   return (
@@ -48,6 +49,7 @@ export default function TempChart({ chartData, ...props }) {
   );
 }
 
+// @ts-ignore
 export function LineChartBar({ chartData, ...props }) {
   const { dataKey, color } = props;
   return (
@@ -88,6 +90,7 @@ export function LineChartBar({ chartData, ...props }) {
   );
 }
 
+// @ts-ignore
 export function BoxChart({ chartData, ...props }) {
   const { dataKey, color } = props;
   return (

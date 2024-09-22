@@ -3,7 +3,7 @@ import { useState } from "react";
 import CityAverage from "./CityAverage";
 import ChartIndex from "./charts/ChartIndex";
 
-const ChartData = ({ slug }) => {
+const ChartData = ({ slug }: { slug: string }) => {
   const [filter] = useState({
     slug: slug,
   });
@@ -11,7 +11,9 @@ const ChartData = ({ slug }) => {
   if (loading || error || !data) return null;
   return (
     <div className="grid gap-y-4">
+      {/* @ts-ignore */}
       <CityAverage average={data.average} />
+      {/* @ts-ignore */}
       <ChartIndex report={data.report} />
     </div>
   );

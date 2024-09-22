@@ -10,10 +10,18 @@ import {
 } from "lucide-react";
 import { IconValue2 } from "../IconValue";
 
-const CityWeather = ({ temp, condition, location }) => {
+const CityWeather = ({
+  temp,
+  condition,
+  location,
+}: {
+  temp: number;
+  condition: { icon: string; text: string };
+  location: { name: string; country: string; localtime: string };
+}) => {
   return (
     <Card>
-      <CardContent className="p-4 flex flex-col justify-between gap-y-3">
+      <CardContent className="p-4 flex flex-col justify-between gap-y-3 h-full">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="bg-gray-100 rounded-md flex items-center justify-center aspect-square w-12">
@@ -38,7 +46,16 @@ const CityWeather = ({ temp, condition, location }) => {
   );
 };
 
-export const WeatherCard = ({ weather }) => {
+interface Weather {
+  wind_kph: number;
+  wind_dir: string;
+  uv: number;
+  humidity: number;
+  feelslike_c: number;
+  windchill_c: number;
+}
+
+export const WeatherCard = ({ weather }: { weather: Weather }) => {
   return (
     <Card className="w-full">
       <CardContent className="grid md:grid-cols-2 gap-y-2 md:gap-y-4 gap-x-8 p-4">

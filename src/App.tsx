@@ -22,9 +22,9 @@ function App() {
   };
   return (
     <div className="bg-slate-600 p-4">
-      <main className="container md:max-w-7xl bg-secondary mx-auto h-full p-2 md:p-4 rounded-xl">
-        <div className="grid md:grid-cols-4 gap-x-10">
-          <div className="md:col-span-3 p-2 md:p-4">
+      <main className="container bg-secondary mx-auto h-full p-2 md:p-4 rounded-xl">
+        <div className="grid lg:grid-cols-4">
+          <div className="lg:col-span-3 p-2 md:p-4">
             <form
               className="relative w-full"
               method="GET"
@@ -34,7 +34,7 @@ function App() {
                 type="text"
                 ref={inputRef}
                 placeholder="Search for a city"
-                className="rounded-md"
+                className="rounded-md py-3 border-gray-500"
               />
               <button
                 type="submit"

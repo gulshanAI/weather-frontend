@@ -30,8 +30,10 @@ const useFetch = <T>(
       const response = await axiosFireApi(url, "get", filters);
       if (response.success) {
         if (callBack) {
+          // @ts-ignore
           callBack(response.data, setData, setLoading);
         } else {
+          // @ts-ignore
           setData(response.data);
           setLoading(false);
         }

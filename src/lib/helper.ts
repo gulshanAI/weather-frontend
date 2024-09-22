@@ -26,9 +26,11 @@ export function convertTo12HourFormat(dateTimeString: string): string {
     minutes < 10 ? `0${minutes}` : minutes.toString();
   return `${hours}:${formattedMinutes} ${ampm}`;
 }
-export function formatWeatherData(data, name) {
-  return data.map((item) => ({
-    time: convertTo12HourFormat(item.lastUpdated),
-    [name]: item[name],
-  }));
+
+// @ts-ignore
+export function checkAndRound(value) {
+  if (typeof value === "number" && !isNaN(value)) {
+    return value.toFixed(2);
+  }
+  return value;
 }

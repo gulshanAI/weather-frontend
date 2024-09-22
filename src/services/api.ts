@@ -50,6 +50,7 @@ axioInstance.interceptors.response.use(
   }
 );
 
+// @ts-ignore
 const axiosFireApi = async (url, method = "get", data = {}) => {
   method = method.toLowerCase();
   let allData = {
@@ -57,8 +58,10 @@ const axiosFireApi = async (url, method = "get", data = {}) => {
     method,
   };
   if (method === "get" || method === "delete") {
+    // @ts-ignore
     allData["params"] = data;
   } else if (method === "post" || method === "patch" || method === "put") {
+    // @ts-ignore
     allData["data"] = data;
   }
   try {
@@ -70,6 +73,7 @@ const axiosFireApi = async (url, method = "get", data = {}) => {
   } catch (error) {
     return {
       success: false,
+      // @ts-ignore
       error: error.response.data,
     };
   }
